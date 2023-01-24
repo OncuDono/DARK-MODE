@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>MANIPULASI ELEMENT</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode">MODE DARK</a>
+            <a onclick="menyalaMode()" id="menyala">MODE MENYALA</a>
+            <a onclick="emasMode()" id="emas">MODE EMAS</a>
+        </nav>
+        <h1>BELAJAR TERUS SAMPAI BISA</h1>
+        <p class="info" id="info"></p>
+    </div>
+
+    <!-- initializing function script -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById('info');
+        let mode = document.getElementById('mode');
+        let home = document.getElementById('home');
+        let menyala = document.getElementById('menyala');
+        let emas = document.getElementById('emas')
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let darkRemainingLeft;
+
+        // darkmode
+        function darkMode() {
+            if (darkRemainingLeft == 1) {
+                info.textContent = "maaf darkMode sudah habis"
+                mode.style.display = "none"
+                menyala.style.display = "none"
+                emas.style.display = "none"
+                home.textContent = "Restart"
+
+                return;
+            }
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+
+            // render ke info element
+            info.textContent = `darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`
+            body.classList.toggle("dark");
+            if (mode.textContent == "MODE DARK") {
+                mode.textContent = "MODE LIGHT";
+            } else {
+                mode.textContent = "MODE DARK";
+            }
+
+        }
+
+        // menyala
+        function menyalaMode() {
+            if (darkRemainingLeft == 1) {
+                info.textContent = "maaf darkMode sudah habis"
+                mode.style.display = "none"
+                menyala.style.display = "none"
+                emas.style.display = "none"
+                home.textContent = "Restart"
+
+                return;
+            }
+
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+
+            // render ke info element
+            info.textContent = `darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`
+            body.classList.toggle("nyala");
+            if (menyala.textContent == "MODE MENYALA") {
+                menyala.textContent = "MODE LIGHT";
+            } else {
+                menyala.textContent = "MODE MENYALA";
+            }
+
+        }
+
+        // emas
+        function emasMode() {
+            if (darkRemainingLeft == 1) {
+                info.textContent = "maaf darkMode sudah habis"
+                mode.style.display = "none"
+                menyala.style.display = "none"
+                emas.style.display = "none"
+                home.textContent = "Restart"
+
+                return;
+            }
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+
+            // render ke info element
+            info.textContent = `darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`
+            body.classList.toggle("omee");
+            if (emas.textContent == "MODE GOLD") {
+                mode.textContent = "MODE LIGHT";
+            } else {
+                mode.textContent = "MODE GOLD";
+            }
+
+        }
+
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
